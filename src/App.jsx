@@ -282,26 +282,57 @@ export default function App() {
               </div>
             </div>
             <div className="rounded-3xl border bg-gray-50 p-6 shadow-sm">
-              <form onSubmit={(e) => { e.preventDefault(); alert('Obrigado! Sua mensagem foi registrada localmente (demo).'); }} className="space-y-3">
-                <div>
-                  <label className="text-sm font-medium">Nome</label>
-                  <input className="mt-1 w-full border rounded-xl px-3 py-2" placeholder="Seu nome" required />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">E-mail</label>
-                  <input type="email" className="mt-1 w-full border rounded-xl px-3 py-2" placeholder="voce@exemplo.com" required />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Mensagem</label>
-                  <textarea className="mt-1 w-full border rounded-xl px-3 py-2 h-28" placeholder="Como podemos colaborar?" required />
-                </div>
-                <button className="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 font-medium shadow">
-                  Enviar mensagem
-                </button>
-                <p className="text-xs text-gray-500">
-                  *Formulário demonstrativo. Integre com Formspree/Netlify Forms para receber mensagens.
-                </p>
-              </form>
+                          <form
+                              name="contato"
+                              method="POST"
+                              data-netlify="true"
+                              className="space-y-3"
+                          >
+                              {/* Campo oculto para o Netlify identificar o formulário */}
+                              <input type="hidden" name="form-name" value="contato" />
+
+                              <div>
+                                  <label className="text-sm font-medium">Nome</label>
+                                  <input
+                                      name="nome"
+                                      className="mt-1 w-full border rounded-xl px-3 py-2"
+                                      placeholder="Seu nome"
+                                      required
+                                  />
+                              </div>
+
+                              <div>
+                                  <label className="text-sm font-medium">E-mail</label>
+                                  <input
+                                      type="email"
+                                      name="email"
+                                      className="mt-1 w-full border rounded-xl px-3 py-2"
+                                      placeholder="voce@exemplo.com"
+                                      required
+                                  />
+                              </div>
+
+                              <div>
+                                  <label className="text-sm font-medium">Mensagem</label>
+                                  <textarea
+                                      name="mensagem"
+                                      className="mt-1 w-full border rounded-xl px-3 py-2 h-28"
+                                      placeholder="Como podemos colaborar?"
+                                      required
+                                  />
+                              </div>
+
+                              <button
+                                  type="submit"
+                                  className="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 font-medium shadow"
+                              >
+                                  Enviar mensagem
+                              </button>
+
+                              <p className="text-xs text-gray-500">
+                                  *Este formulário é processado pelo Netlify. As mensagens aparecerão no painel do site.
+                              </p>
+                          </form>
             </div>
           </div>
         </div>
