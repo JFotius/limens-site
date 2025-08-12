@@ -282,10 +282,18 @@ export default function App() {
               </div>
             </div>
             <div className="rounded-3xl border bg-gray-50 p-6 shadow-sm">
-                          <form name="contato" method="POST" data-netlify="true"  className="space-y-3" >
+                          <form
+                              name="contato"
+                              method="POST"
+                              data-netlify="true"
+                              netlify-honeypot="bot-field"
+                              className="space-y-3"
+                          >
                               {/* Campo oculto para o Netlify identificar o formulário */}
                               <input type="hidden" name="form-name" value="contato" />
-
+                              <p className="hidden">
+                                  <label>Não preencha este campo: <input name="bot-field" /></label>
+                              </p>
                               <div>
                                   <label className="text-sm font-medium">Nome</label>
                                   <input
